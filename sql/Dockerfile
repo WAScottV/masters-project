@@ -1,8 +1,8 @@
 FROM mysql
-# Derived from official mysql image (our base image)
-# Add a database
 ENV MYSQL_DATABASE nlp
-# Add the content of the sql-scripts/ directory to your image
-# All scripts in docker-entrypoint-initdb.d/ are automatically
-# executed during container startup
 COPY ./sql-scripts/ /docker-entrypoint-initdb.d/
+
+#584  docker stop sql
+ # 585  docker rm sql
+#  586  docker build -t sql .
+# 587  docker run -d -p 3307:3306 --name sql -e MYSQL_ROOT_PASSWORD=password sql

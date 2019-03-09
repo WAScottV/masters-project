@@ -1,0 +1,1 @@
+docker exec -it sql mysql -uroot -ppassword  -e "Use nlp; show databases;"
