@@ -4,12 +4,12 @@ const mysql = require('mysql');
 const app = express();
 const pool = mysql.createPool({
 	connectionLimit: 10,
-	host: 'localhost',
-	user: 'root',
+	host: '172.28.1.1',
+	user: 'umduser',
 	password: 'password',
 	database: 'nlp',
-	insecureAuth: true,
-	port: 3307,
+	//insecureAuth: true,
+	port: 3306,
 });
 
 app.use(function (req, res, next) {
@@ -18,7 +18,7 @@ app.use(function (req, res, next) {
 	next();
 });
 
-app.get('/', (req, res) => res.send('Send query'));
+app.get('/', (req, res) => res.send('New Response'));
 
 app.get('/all-data', (req, res) => {
 	pool.query('SELECT * FROM nlp.Phrase', (error, results, fields) => res.json(results));
@@ -28,8 +28,11 @@ app.get('/data', (req, res) => {
 	pool.query(`CALL GetTrainingAndTestingRecords (${req.query.pct}, ${req.query.res_col}, ${req.query.seed})`,
 		(error, results, fields) => {
 			res.json({
-				train: results[0],
-				test: results[1],
+				error,
+				results,
+				fields,
+				// train: results[0],
+				// test: results[1],
 			});
 		});
 });

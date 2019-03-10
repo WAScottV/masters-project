@@ -1,7 +1,4 @@
 FROM mysql
-ENV MYSQL_DATABASE nlp
-# COPY ./sql-scripts/ /docker-entrypoint-initdb.d/
-# COPY ./temp.csv /var/lib/mysql-files/
 COPY ./dump.sql docker-entrypoint-initdb.d/dump.sql
 
 #584  docker stop sql
