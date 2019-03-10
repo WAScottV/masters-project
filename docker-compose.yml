@@ -5,7 +5,7 @@ services:
     environment:
       MYSQL_DATABASE: 'nlp'
       # So you don't have to use root, but you can if you like
-      MYSQL_USER: 'user'
+      MYSQL_USER: 'umduser'
       # You can use whatever password you like
       MYSQL_PASSWORD: 'password'
       # Password for root access
