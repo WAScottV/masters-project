@@ -28,11 +28,8 @@ app.get('/data', (req, res) => {
 	pool.query(`CALL GetTrainingAndTestingRecords (${req.query.pct}, ${req.query.res_col}, ${req.query.seed})`,
 		(error, results, fields) => {
 			res.json({
-				error,
-				results,
-				fields,
-				// train: results[0],
-				// test: results[1],
+				train: results[0],
+				test: results[1],
 			});
 		});
 });
