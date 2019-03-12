@@ -1,0 +1,1 @@
+mysqldump -uroot -ppassword --all-databases -R > /Users/williamscott/Documents/git/masters-project/sql/dump.sql
