@@ -21,7 +21,7 @@ app.use(function (req, res, next) {
 app.get('/', (req, res) => res.send('New Response'));
 
 app.get('/all-data', (req, res) => {
-	pool.query('SELECT * FROM nlp.Phrase', (error, results, fields) => res.json(results));
+	pool.query('SELECT table_name FROM information_schema.tables where table_schema=\'nlp\'', (error, results, fields) => res.json(results));
 });
 
 app.get('/data', (req, res) => {

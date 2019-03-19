@@ -351,7 +351,7 @@ UNLOCK TABLES;
 --
 
 /*!40000 ALTER TABLE `innodb_index_stats` DISABLE KEYS */;
-INSERT  IGNORE INTO `innodb_index_stats` VALUES ('mysql','component','PRIMARY','2019-02-27 01:43:00','n_diff_pfx01',0,1,'component_id'),('mysql','component','PRIMARY','2019-02-27 01:43:00','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('mysql','component','PRIMARY','2019-02-27 01:43:00','size',1,NULL,'Number of pages in the index'),('mysql','gtid_executed','PRIMARY','2019-02-27 01:43:00','n_diff_pfx01',0,1,'source_uuid'),('mysql','gtid_executed','PRIMARY','2019-02-27 01:43:00','n_diff_pfx02',0,1,'source_uuid,interval_start'),('mysql','gtid_executed','PRIMARY','2019-02-27 01:43:00','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('mysql','gtid_executed','PRIMARY','2019-02-27 01:43:00','size',1,NULL,'Number of pages in the index'),('nlp','metadata','PRIMARY','2019-03-05 02:22:57','n_diff_pfx01',1190,7,'Id'),('nlp','metadata','PRIMARY','2019-03-05 02:22:57','n_leaf_pages',7,NULL,'Number of leaf pages in the index'),('nlp','metadata','PRIMARY','2019-03-05 02:22:57','size',8,NULL,'Number of pages in the index'),('nlp','phrase','PRIMARY','2019-03-02 19:13:00','n_diff_pfx01',1190,19,'Id'),('nlp','phrase','PRIMARY','2019-03-02 19:13:00','n_leaf_pages',19,NULL,'Number of leaf pages in the index'),('nlp','phrase','PRIMARY','2019-03-02 19:13:00','size',20,NULL,'Number of pages in the index'),('nlp','phrase_bak','PRIMARY','2019-03-01 00:30:50','n_diff_pfx01',1099,20,'Id'),('nlp','phrase_bak','PRIMARY','2019-03-01 00:30:50','n_leaf_pages',32,NULL,'Number of leaf pages in the index'),('nlp','phrase_bak','PRIMARY','2019-03-01 00:30:50','size',33,NULL,'Number of pages in the index'),('nlp','response','PRIMARY','2019-03-05 02:20:58','n_diff_pfx01',1190,29,'ResponseId'),('nlp','response','PRIMARY','2019-03-05 02:20:58','n_diff_pfx02',3570,29,'ResponseId,ResponseNum'),('nlp','response','PRIMARY','2019-03-05 02:20:58','n_leaf_pages',29,NULL,'Number of leaf pages in the index'),('nlp','response','PRIMARY','2019-03-05 02:20:58','size',30,NULL,'Number of pages in the index'),('sys','sys_config','PRIMARY','2019-02-27 01:43:01','n_diff_pfx01',5,1,'variable'),('sys','sys_config','PRIMARY','2019-02-27 01:43:01','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('sys','sys_config','PRIMARY','2019-02-27 01:43:01','size',1,NULL,'Number of pages in the index');
+INSERT  IGNORE INTO `innodb_index_stats` VALUES ('mysql','component','PRIMARY','2019-02-27 01:43:00','n_diff_pfx01',0,1,'component_id'),('mysql','component','PRIMARY','2019-02-27 01:43:00','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('mysql','component','PRIMARY','2019-02-27 01:43:00','size',1,NULL,'Number of pages in the index'),('mysql','gtid_executed','PRIMARY','2019-02-27 01:43:00','n_diff_pfx01',0,1,'source_uuid'),('mysql','gtid_executed','PRIMARY','2019-02-27 01:43:00','n_diff_pfx02',0,1,'source_uuid,interval_start'),('mysql','gtid_executed','PRIMARY','2019-02-27 01:43:00','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('mysql','gtid_executed','PRIMARY','2019-02-27 01:43:00','size',1,NULL,'Number of pages in the index'),('nlp','metadata','PRIMARY','2019-03-05 02:22:57','n_diff_pfx01',1190,7,'Id'),('nlp','metadata','PRIMARY','2019-03-05 02:22:57','n_leaf_pages',7,NULL,'Number of leaf pages in the index'),('nlp','metadata','PRIMARY','2019-03-05 02:22:57','size',8,NULL,'Number of pages in the index'),('nlp','phrase','PRIMARY','2019-03-02 19:13:00','n_diff_pfx01',1190,19,'Id'),('nlp','phrase','PRIMARY','2019-03-02 19:13:00','n_leaf_pages',19,NULL,'Number of leaf pages in the index'),('nlp','phrase','PRIMARY','2019-03-02 19:13:00','size',20,NULL,'Number of pages in the index'),('nlp','phrase_bak','PRIMARY','2019-03-01 00:30:50','n_diff_pfx01',1099,20,'Id'),('nlp','phrase_bak','PRIMARY','2019-03-01 00:30:50','n_leaf_pages',32,NULL,'Number of leaf pages in the index'),('nlp','phrase_bak','PRIMARY','2019-03-01 00:30:50','size',33,NULL,'Number of pages in the index'),('nlp','response','PRIMARY','2019-03-05 02:20:58','n_diff_pfx01',1190,29,'ResponseId'),('nlp','response','PRIMARY','2019-03-05 02:20:58','n_diff_pfx02',3570,29,'ResponseId,ResponseNum'),('nlp','response','PRIMARY','2019-03-05 02:20:58','n_leaf_pages',29,NULL,'Number of leaf pages in the index'),('nlp','response','PRIMARY','2019-03-05 02:20:58','size',30,NULL,'Number of pages in the index'),('nlp','test','GEN_CLUST_INDEX','2019-03-19 02:27:47','n_diff_pfx01',0,1,'DB_ROW_ID'),('nlp','test','GEN_CLUST_INDEX','2019-03-19 02:27:47','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('nlp','test','GEN_CLUST_INDEX','2019-03-19 02:27:47','size',1,NULL,'Number of pages in the index'),('sys','sys_config','PRIMARY','2019-02-27 01:43:01','n_diff_pfx01',5,1,'variable'),('sys','sys_config','PRIMARY','2019-02-27 01:43:01','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('sys','sys_config','PRIMARY','2019-02-27 01:43:01','size',1,NULL,'Number of pages in the index');
 /*!40000 ALTER TABLE `innodb_index_stats` ENABLE KEYS */;
 
 --
@@ -359,7 +359,7 @@ INSERT  IGNORE INTO `innodb_index_stats` VALUES ('mysql','component','PRIMARY','
 --
 
 /*!40000 ALTER TABLE `innodb_table_stats` DISABLE KEYS */;
-INSERT  IGNORE INTO `innodb_table_stats` VALUES ('mysql','component','2019-02-27 01:43:00',0,1,0),('mysql','gtid_executed','2019-02-27 01:43:00',0,1,0),('nlp','metadata','2019-03-05 02:22:57',1190,8,0),('nlp','phrase','2019-03-02 19:13:00',1190,20,0),('nlp','phrase_bak','2019-03-01 00:30:50',1099,33,0),('nlp','response','2019-03-05 02:20:58',3570,30,0),('sys','sys_config','2019-02-27 01:43:01',5,1,0);
+INSERT  IGNORE INTO `innodb_table_stats` VALUES ('mysql','component','2019-02-27 01:43:00',0,1,0),('mysql','gtid_executed','2019-02-27 01:43:00',0,1,0),('nlp','metadata','2019-03-05 02:22:57',1190,8,0),('nlp','phrase','2019-03-02 19:13:00',1190,20,0),('nlp','phrase_bak','2019-03-01 00:30:50',1099,33,0),('nlp','response','2019-03-05 02:20:58',3570,30,0),('nlp','test','2019-03-19 02:27:47',0,1,0),('sys','sys_config','2019-02-27 01:43:01',5,1,0);
 /*!40000 ALTER TABLE `innodb_table_stats` ENABLE KEYS */;
 
 --
@@ -1057,6 +1057,27 @@ INSERT INTO `Response` VALUES (2909628138,'there are any direct flights','bookin
 UNLOCK TABLES;
 
 --
+-- Table structure for table `test`
+--
+
+DROP TABLE IF EXISTS `test`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `test` (
+  `id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `test`
+--
+
+LOCK TABLES `test` WRITE;
+/*!40000 ALTER TABLE `test` DISABLE KEYS */;
+/*!40000 ALTER TABLE `test` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Dumping routines for database 'nlp'
 --
 /*!50003 DROP PROCEDURE IF EXISTS `GetTrainingAndTestingRecords` */;
@@ -1156,4 +1177,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-12 18:37:36
+-- Dump completed on 2019-03-18 22:33:04

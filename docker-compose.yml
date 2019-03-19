@@ -1,20 +1,9 @@
 version: '3.3'
 services:
   sql:
-    # build: './sql'
-    image: mysql:latest
-    environment:
-      MYSQL_DATABASE: 'nlp'
-      MYSQL_USER: 'umduser'
-      MYSQL_PASSWORD: 'password'
-      MYSQL_ROOT_PASSWORD: 'password'
+    build: './sql'
     ports:
       - '3307:3306'
-    expose:
-      - '3307'
-    command: --default-authentication-plugin=mysql_native_password
-    volumes:
-      - ./sql/dump.sql:/docker-entrypoint-initdb.d/dump.sql
     networks:
       container_net:
         ipv4_address: 172.28.1.1
