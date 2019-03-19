@@ -3,18 +3,6 @@ const request = require('request');
 const cm = require('./confusionMatrix');
 const path = require('path');
 
-module.exports.readFile = (path) => {
-    return new Promise((resolve, reject) => {
-        fs.readFile(path, 'utf8', (err, data) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(data);
-            }
-        });
-    })
-};
-
 module.exports.getMysqlData = () => {
     return new Promise((resolve, reject) => {
         request.get('http://172.28.1.2:8080/data', {
@@ -63,13 +51,16 @@ module.exports.classifyTestData = (fnContext, classifierFn, testData, parseFn) =
 };
 
 module.exports.logResults = (trainData, testResults) => {
-    const path = `./results/${testResults.name}`;
-    ensureDirectoryExistence(path + '/temp.txt');
-    fs.writeFileSync(`${path}/train-data.json`, Buffer.from(JSON.stringify(trainData)));
-    fs.writeFileSync(`${path}/test-results.json`, Buffer.from(JSON.stringify(testResults)));
-    cm.createCsvConfusionMatrix(`${path}/test-results.json`,`${path}/matrix.csv`);
-    console.log('Correct: ', testResults.correct);
-    console.log('Incorrect: ', testResults.incorrect);
+    request.post('http://172.28.1.4:8080/results', JSON.stringify({ json: 
+        { train: trainData, test: testResults } 
+    }));
+    // const path = `./results/${testResults.name}`;
+    // ensureDirectoryExistence(path + '/temp.txt');
+    // fs.writeFileSync(`${path}/train-data.json`, Buffer.from(JSON.stringify(trainData)));
+    // fs.writeFileSync(`${path}/test-results.json`, Buffer.from(JSON.stringify(testResults)));
+    // cm.createCsvConfusionMatrix(`${path}/test-results.json`,`${path}/matrix.csv`);
+    // console.log('Correct: ', testResults.correct);
+    // console.log('Incorrect: ', testResults.incorrect);
 };
 
 function ensureDirectoryExistence(filePath) {

@@ -18,11 +18,18 @@ services:
     build: './node-classifiers'
     ports:
       - '3001:8080'
-    volumes:
-      - ./node-classifiers/results:/usr/src/app/results
     networks:
       container_net:
         ipv4_address: 172.28.1.3
+  results:
+    build: './results'
+    ports:
+      - '3002:8080'
+    volumes:
+      - ./results/data:/usr/src/app/data
+    networks:
+      container_net:
+        ipv4_address: 172.28.1.4
 networks:
   container_net:
     ipam:

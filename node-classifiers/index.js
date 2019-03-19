@@ -11,18 +11,3 @@ app.get('/bayes', (req, res) => {
 });
 
 app.listen(8080,'0.0.0.0', () => console.log('Starting server...'));
-
-// switch(process.argv[2]) {
-//   case 'bayes':
-//     console.log('Running Bayes Classifier...');
-//     bayes.run();
-//     break;
-//   case 'lr':
-//     console.log('Running Logistict Regression Classifier...');
-//     lr.run();
-//     break;
-//   case 'nlp':
-//     console.log('Running Node-NLP Manager...');
-//     nlp.run();
-//     break;
-// }
