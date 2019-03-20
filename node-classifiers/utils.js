@@ -26,48 +26,15 @@ module.exports.getMysqlData = () => {
     });
 };
 
-module.exports.classifyTestData = (fnContext, classifierFn, testData, parseFn) => {
-    const testResults = { correct: 0, incorrect: 0, results: [] };
-    testData.forEach(td => {
-        let thisClass = classifierFn.call(fnContext, td.phrase);
-        if (parseFn) {
-            thisClass = parseFn(thisClass);
-        }
-        let correct = false;
-        if (thisClass === td.classifier) {
-            testResults.correct++;
-            correct = true;
-        } else {
-            testResults.incorrect++;
-        }
-        testResults.results.push({
-            correct,
-            phrase: td.phrase, 
-            correctClass: td.classifier, 
-            assignedClass: thisClass,
+module.exports.logResults = (trainData, testResults, cb) => {
+    return new Promise((resolve, reject) => {
+        request.post('http://172.28.1.4:8080/results', { 
+            json: { 
+                train: trainData, 
+                test: testResults 
+            }
+        }, (err, res, body) => {
+            resolve(body);
         });
     });
-    return testResults;
 };
-
-module.exports.logResults = (trainData, testResults) => {
-    request.post('http://172.28.1.4:8080/results', JSON.stringify({ json: 
-        { train: trainData, test: testResults } 
-    }));
-    // const path = `./results/${testResults.name}`;
-    // ensureDirectoryExistence(path + '/temp.txt');
-    // fs.writeFileSync(`${path}/train-data.json`, Buffer.from(JSON.stringify(trainData)));
-    // fs.writeFileSync(`${path}/test-results.json`, Buffer.from(JSON.stringify(testResults)));
-    // cm.createCsvConfusionMatrix(`${path}/test-results.json`,`${path}/matrix.csv`);
-    // console.log('Correct: ', testResults.correct);
-    // console.log('Incorrect: ', testResults.incorrect);
-};
-
-function ensureDirectoryExistence(filePath) {
-    var dirname = path.dirname(filePath);
-    if (fs.existsSync(dirname)) {
-      return true;
-    }
-    ensureDirectoryExistence(dirname);
-    fs.mkdirSync(dirname);
-}

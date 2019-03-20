@@ -6,8 +6,8 @@ const express = require('express');
 const app = express();
 
 app.get('/bayes', (req, res) => {
-  bayes.run();
-  res.json({msg: 'done'});
+  bayes.run()
+    .then(data => res.json(data));
 });
 
 app.listen(8080,'0.0.0.0', () => console.log('Starting server...'));

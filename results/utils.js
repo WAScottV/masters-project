@@ -8,8 +8,10 @@ module.exports.logResults = (trainData, testResults) => {
     fs.writeFileSync(`${path}/train-data.json`, Buffer.from(JSON.stringify(trainData)));
     fs.writeFileSync(`${path}/test-results.json`, Buffer.from(JSON.stringify(testResults)));
     cm.createCsvConfusionMatrix(`${path}/test-results.json`,`${path}/matrix.csv`);
-    console.log('Correct: ', testResults.correct);
-    console.log('Incorrect: ', testResults.incorrect);
+    return {
+        correct: testResults.correct,
+        incorrect: testResults.incorrect,
+    };
 };
 
 function ensureDirectoryExistence(filePath) {
