@@ -5,9 +5,21 @@ const express = require('express');
 
 const app = express();
 
-app.get('/bayes', (req, res) => {
+app.get('/natural/bayes', (req, res) => {
   bayes.run()
     .then(data => res.json(data));
 });
 
-app.listen(8080,'0.0.0.0', () => console.log('Starting server...'));
+app.get('/natural/lr', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.write({msg: 'starting'});
+  lr.run()
+    .then(data => res.end({data}));
+});
+
+app.get('/status', (req, res) => {
+
+});
+
+const server = app.listen(8080,'0.0.0.0', () => console.log('Starting server...'));
+server.setTimeout(300000);

@@ -24,7 +24,7 @@ module.exports.run = () => {
       });
 
       const resultsObj = {
-        name: 'bayes',
+        name: 'natural/bayes/',
         correct: results.filter(r => r.correct).length, 
         incorrect: results.filter(r => !r.correct).length,
         results,

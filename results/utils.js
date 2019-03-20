@@ -5,9 +5,9 @@ const path = require('path');
 module.exports.logResults = (trainData, testResults) => {
     const path = `./data/${testResults.name}`;
     ensureDirectoryExistence(path + '/temp.txt');
-    fs.writeFileSync(`${path}/train-data.json`, Buffer.from(JSON.stringify(trainData)));
-    fs.writeFileSync(`${path}/test-results.json`, Buffer.from(JSON.stringify(testResults)));
-    cm.createCsvConfusionMatrix(`${path}/test-results.json`,`${path}/matrix.csv`);
+    fs.writeFileSync(`${path}/train-data.json`, JSON.stringify(trainData, null, 2));
+    fs.writeFileSync(`${path}/test-results.json`, JSON.stringify(testResults, null, 2));
+    cm.logConfusionMatrixData(`${path}/test-results.json`, path);
     return {
         correct: testResults.correct,
         incorrect: testResults.incorrect,

@@ -1,7 +1,4 @@
-const fs = require('fs');
 const request = require('request');
-const cm = require('./confusionMatrix');
-const path = require('path');
 
 module.exports.getMysqlData = () => {
     return new Promise((resolve, reject) => {
