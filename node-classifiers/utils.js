@@ -23,7 +23,7 @@ module.exports.getMysqlData = () => {
     });
 };
 
-module.exports.logResults = (trainData, testResults, cb) => {
+module.exports.logResults = (trainData, testResults) => {
     return new Promise((resolve, reject) => {
         request.post('http://172.28.1.4:8080/results', { 
             json: { 

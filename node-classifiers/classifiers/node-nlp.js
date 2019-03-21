@@ -4,7 +4,8 @@ const u = require('../utils');
 const manager = new NlpManager({ languages: ['en'] });
 
 module.exports.run = () => {
-	u.getMysqlData()
+	return new Promise((resolve, reject) => {
+		u.getMysqlData()
 		.then(response => {
 			response.trainData.forEach(d => {
 				manager.addDocument('en', d.phrase, d.classification);
@@ -30,9 +31,11 @@ module.exports.run = () => {
 							incorrect: results.filter(r => !r.correct).length,
 							results,
 						};
-						u.logResults(response.trainData, resultsObj);
+						u.logResults(response.trainData, resultsObj)
+							.then(resolve);
 					});
 				});
 		})
-		.catch(console.error);
+		.catch(reject);
+	});
 };

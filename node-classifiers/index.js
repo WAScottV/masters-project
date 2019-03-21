@@ -6,19 +6,24 @@ const express = require('express');
 const app = express();
 
 app.get('/natural/bayes', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.write(JSON.stringify({ msg: 'Starting...'}));
   bayes.run()
-    .then(data => res.json(data));
+    .then(data => res.end(JSON.stringify(data)));
 });
 
 app.get('/natural/lr', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
-  res.write({msg: 'starting'});
+  res.write(JSON.stringify({ msg: 'Starting...'}));
   lr.run()
-    .then(data => res.end({data}));
+    .then(data => res.end(JSON.stringify(data)));
 });
 
-app.get('/status', (req, res) => {
-
+app.get('/natural/nlp', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.write(JSON.stringify({ msg: 'Starting...'}));
+  nlp.run()
+    .then(data => res.end(JSON.stringify(data)));
 });
 
 const server = app.listen(8080,'0.0.0.0', () => console.log('Starting server...'));
