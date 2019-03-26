@@ -14,7 +14,7 @@ services:
     networks:
       container_net:
         ipv4_address: 172.28.1.2
-  node:
+  classifiers-node:
     build: './node-classifiers'
     ports:
       - '3001:8080'
