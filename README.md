@@ -22,7 +22,7 @@ Presently, this is a single container with various NodeJS NLP classifiers being 
 
 ## Quick Start
 
-1. Build Docker containers
+1. Build Docker containers (_This may not work on Windows, in which case this step may be skipped_)
 > ```docker-compose build```
 2. Start all containers
 > ```docker-compose up```
