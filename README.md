@@ -31,3 +31,22 @@ Presently, this is a single container with various NodeJS NLP classifiers being 
 4. Stop containers when finished
 > ```docker-compose down```
  
+## Dataset
+
+The original data may be found here: https://www.figure-eight.com/data-for-everyone/. Additionally, the sql folder contains the .csv source for the data imported into the MySQL database.
+
+The actual data contained in the database has been curated to reclassify what appear to have been mistakes in the original data. Additionally, entries that provided no value or would have skewed training/testing have been marked for exclusion. The data of interest for training and testing has the following columns:
+
+* ResponseId: Unique ID for each set of responses. The original data has three columns for responses, each of which appeared to belong to a single customer. These are distinguished by the ```ResponseNum``` column
+* Response: The actual text of the response provided
+* Classifier: The classification assigned to the given response. (e.g. "Can you help me get a new flight?" maps to booking_new)
+* ResponseNum: Indicates which column the response belonged to in the original dataset.
+* Include: Indicates whether or not the record should be included in training/testing. All data from the original dataset resides in the database, and this flag determines if it's used or not
+ 
+## Configuration and Extensibility
+
+### Train/Test Ratio
+
+Presently, this is fixed at 80/20 train to test. I will be updating this in the near future so that with each test run this may be changed.
+
+### Data Selection
