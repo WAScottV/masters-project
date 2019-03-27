@@ -8,29 +8,29 @@ const pool = mysql.createPool({
 	user: 'umduser',
 	password: 'password',
 	database: 'nlp',
-	//insecureAuth: true,
 	port: 3306,
 });
 
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
 	console.log('Time:', Date.now());
 	console.log(`${req.path}`);
 	next();
 });
 
-app.get('/', (req, res) => res.send('New Response'));
-
-app.get('/all-data', (req, res) => {
-	pool.query('SELECT table_name FROM information_schema.tables where table_schema=\'nlp\'', (error, results, fields) => res.json(results));
-});
+app.get('/', (req, res) => res.send('Hello, world!'));
 
 app.get('/data', (req, res) => {
-	pool.query(`CALL GetTrainingAndTestingRecords (${req.query.pct}, ${req.query.res_col}, ${req.query.seed})`,
-		(error, results, fields) => {
-			res.json({
-				train: results[0],
-				test: results[1],
+	const cols = req.query.res_col.split(',');
+	Promise.all(cols.map(c => {
+		return getData(req.query.pct, c, req.query.seed)
+	}))
+		.then((results) => {
+			const overall = { train: [], test: [] };
+			results.forEach(r => {
+				overall.train.push(...r.train);
+				overall.test.push(...r.test);
 			});
+			res.json(overall);
 		});
 });
 
@@ -38,4 +38,16 @@ pool.on('error', error => {
 	console.log(error);
 });
 
-app.listen(8080,'0.0.0.0', () => console.log('Starting server...'));
+app.listen(8080, '0.0.0.0', () => console.log('Starting server...'));
+
+const getData = (pct, res_col, seed) => {
+	return new Promise((resolve, reject) => {
+		pool.query(`CALL GetTrainingAndTestingRecords (${pct}, ${res_col}, ${seed})`,
+			(error, results, fields) => {
+				resolve({
+					train: results[0],
+					test: results[1],
+				});
+			});
+	});
+};

@@ -21,7 +21,7 @@ module.exports.run = () => {
 									assignedClass: response.intent,
 									correctClass: d.classification,
 									phrase: d.phrase,
-								}
+								};
 							});
 					}))
 					.then(results => {

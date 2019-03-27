@@ -1140,7 +1140,8 @@ BEGIN
         AllCnt,
         TrainingCnt,
         Num,
-        Response
+        Response,
+        responseColumn
 	FROM
 		Staging
 	WHERE
@@ -1152,7 +1153,8 @@ BEGIN
         AllCnt,
         TrainingCnt,
         Num,
-        Response
+        Response,
+        responseColumn
 	FROM
 		Staging
 	WHERE
@@ -1177,4 +1179,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-18 22:33:04
+-- Dump completed on 2019-03-26 20:04:07
