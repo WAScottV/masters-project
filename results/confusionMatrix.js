@@ -3,7 +3,7 @@ const fs = require('fs');
 
 module.exports.logConfusionMatrixData = (sourceFilePath, destDir) => {
   fs.readFile(sourceFilePath, (err, data) => {
-    const obj = JSON.parse(Buffer.from(data).toString('utf8')).results.filter(r => !r.correct);
+    const obj = JSON.parse(Buffer.from(data).toString('utf8')).results;
     const trueLabels = obj.map(d => d.assignedClass);
     const predictedLabels = obj.map(d => d.correctClass);
     const CM2 = ConfusionMatrix.fromLabels(trueLabels, predictedLabels);

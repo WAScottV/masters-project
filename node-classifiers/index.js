@@ -15,14 +15,14 @@ app.get('/natural/bayes', (req, res) => {
 app.get('/natural/lr', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.write(JSON.stringify({ msg: 'Starting...'}));
-  lr.run()
+  lr.run(req.query.pct, req.query.res_col, req.query.seed)
     .then(data => res.end(JSON.stringify(data)));
 });
 
 app.get('/natural/nlp', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.write(JSON.stringify({ msg: 'Starting...'}));
-  nlp.run()
+  nlp.run(req.query.pct, req.query.res_col, req.query.seed)
     .then(data => res.end(JSON.stringify(data)));
 });
 

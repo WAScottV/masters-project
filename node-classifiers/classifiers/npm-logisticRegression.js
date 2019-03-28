@@ -3,9 +3,9 @@ const u = require('../utils');
 
 const classifier = new natural.LogisticRegressionClassifier();
 
-module.exports.run = () => {
+module.exports.run = (trainPct, res_cols, seed) => {
   return new Promise((resolve, reject) => {
-    u.getMysqlData()
+    u.getMysqlData(trainPct, res_cols, seed)
     .then(response => {
       response.trainData.forEach(d => {
         classifier.addDocument(d.phrase, d.classification);

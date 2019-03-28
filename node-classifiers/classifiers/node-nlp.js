@@ -3,9 +3,9 @@ const u = require('../utils');
 
 const manager = new NlpManager({ languages: ['en'] });
 
-module.exports.run = () => {
+module.exports.run = (trainPct, res_cols, seed) => {
 	return new Promise((resolve, reject) => {
-		u.getMysqlData()
+		u.getMysqlData(trainPct, res_cols, seed)
 		.then(response => {
 			response.trainData.forEach(d => {
 				manager.addDocument('en', d.phrase, d.classification);
