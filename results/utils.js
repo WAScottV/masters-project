@@ -3,7 +3,7 @@ const cm = require('./confusionMatrix');
 const path = require('path');
 
 module.exports.logResults = (trainData, testResults) => {
-    const path = `./data/${testResults.name}`;
+    const path = `./data/${testResults.name}_${new Date().toISOString()}`;
     ensureDirectoryExistence(path + '/temp.txt');
     fs.writeFileSync(`${path}/train-data.json`, JSON.stringify(trainData, null, 2));
     fs.writeFileSync(`${path}/test-results.json`, JSON.stringify(testResults, null, 2));

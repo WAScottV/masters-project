@@ -49,4 +49,6 @@ The actual data contained in the database has been curated to reclassify what ap
 
 Presently, this is fixed at 80/20 train to test. I will be updating this in the near future so that with each test run this may be changed.
 
+http://localhost:3001/natural/bayes?pct=0.8&res_col=1&seed=1#
+
 ### Data Selection

@@ -19,6 +19,14 @@ app.use((req, res, next) => {
 
 app.get('/', (req, res) => res.send('Hello, world!'));
 
+app.get('/data-new', (req, res) => {
+	return new Promise((resove, reject) => {
+		pool.query('SELECT Class, Title, Train FROM ag_news_all', (error, results, fields) => {
+			resolve(results);
+		});
+	});
+});
+
 app.get('/data', (req, res) => {
 	const cols = req.query.res_col.split(',');
 	Promise.all(cols.map(c => {
