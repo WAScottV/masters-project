@@ -20,11 +20,16 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => res.send('Hello, world!'));
 
 app.get('/data-new', (req, res) => {
-	return new Promise((resove, reject) => {
 		pool.query('SELECT Class, Title, Train FROM ag_news_all', (error, results, fields) => {
-			resolve(results);
+			const mod = results.map(v => {
+				return {
+					class: v.Class,
+					title: v.Title,
+					train: v.Train
+				};
+			});
+			res.json(mod);
 		});
-	});
 });
 
 app.get('/data', (req, res) => {

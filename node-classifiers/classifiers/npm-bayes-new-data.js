@@ -3,17 +3,19 @@ const u = require('../utils');
 
 const classifier = new natural.BayesClassifier();
 
-module.exports.run = (trainPct, res_cols, seed) => {
+module.exports.run = () => {
   return new Promise((resolve, reject) => {
-    u.getMysqlData(trainPct, res_cols, seed)
+    u.getNewMysqlData()
     .then(response => {
-      response.trainData.forEach(d => {
+      const trainData = response.trainData.slice(0, Math.floor(response.trainData.length * 0.1));  
+      const testData = response.testData.slice(0, Math.floor(response.testData.length * 0.1));
+      console.log(trainData);
+      trainData.forEach(d => {
         classifier.addDocument(d.phrase, d.classification);
       });
-
       classifier.train();
 
-      const results = response.testData.map(d => {
+      const results = testData.map(d => {
         const assigned = classifier.classify(d.phrase);
         return {
           correct: assigned === d.classification,
@@ -24,12 +26,12 @@ module.exports.run = (trainPct, res_cols, seed) => {
       });
 
       const resultsObj = {
-        name: 'natural/bayes/',
+        name: 'natural/bayes/new/',
         correct: results.filter(r => r.correct).length, 
         incorrect: results.filter(r => !r.correct).length,
         results,
       };
-      u.logResults(response.trainData, resultsObj)
+      u.logResults(trainData, resultsObj)
         .then(resolve);
     })
     .catch(reject);
