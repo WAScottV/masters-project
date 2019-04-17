@@ -20,8 +20,9 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => res.send('Hello, world!'));
 
 app.get('/data-new', (req, res) => {
-		pool.query('SELECT Class, Title, Train FROM ag_news_all', (error, results, fields) => {
-			const mod = results.map(v => {
+		pool.query('CALL GetNewsData(0.1)', (error, results, fields) => {
+			console.log(results[0]);
+			const mod = results[0].map(v => {
 				return {
 					class: v.Class,
 					title: v.Title,

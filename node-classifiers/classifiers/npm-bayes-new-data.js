@@ -7,9 +7,8 @@ module.exports.run = () => {
   return new Promise((resolve, reject) => {
     u.getNewMysqlData()
     .then(response => {
-      const trainData = response.trainData.slice(0, Math.floor(response.trainData.length * 0.1));  
-      const testData = response.testData.slice(0, Math.floor(response.testData.length * 0.1));
-      console.log(trainData);
+      const trainData = response.trainData;
+      const testData = response.testData;
       trainData.forEach(d => {
         classifier.addDocument(d.phrase, d.classification);
       });
