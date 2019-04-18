@@ -20,13 +20,13 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => res.send('Hello, world!'));
 
 app.get('/data-new', (req, res) => {
-		pool.query('CALL GetNewsData(0.1)', (error, results, fields) => {
-			console.log(results[0]);
+		pool.query('CALL GetNewsData(0.3)', (error, results, fields) => {
 			const mod = results[0].map(v => {
 				return {
 					class: v.Class,
 					title: v.Title,
-					train: v.Train
+					description: v.Description,
+					train: v.Train,
 				};
 			});
 			res.json(mod);

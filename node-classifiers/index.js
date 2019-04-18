@@ -35,4 +35,4 @@ app.get('/new/natural/bayes', (req, res) => {
 });
 
 const server = app.listen(8080,'0.0.0.0', () => console.log('Starting server...'));
-server.setTimeout(300000);
+server.setTimeout(900000);

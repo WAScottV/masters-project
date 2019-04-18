@@ -30,7 +30,6 @@ module.exports.getNewMysqlData = () => {
 				reject(error);
 			} else {
 				const bodyObj = JSON.parse(body);
-				console.log(bodyObj);
 				const trainData = bodyObj.filter(b => b.train === 1)
 					.map(obj => ({ phrase: obj.title, classification: obj.class }));
 				const testData = bodyObj.filter(b => b.train === 0)
