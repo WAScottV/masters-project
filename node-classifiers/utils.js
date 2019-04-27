@@ -31,9 +31,9 @@ module.exports.getNewMysqlData = () => {
 			} else {
 				const bodyObj = JSON.parse(body);
 				const trainData = bodyObj.filter(b => b.train === 1)
-					.map(obj => ({ phrase: obj.title, classification: obj.class }));
+					.map(obj => ({ phrase: obj.description, phrase2: obj.title, classification: obj.class }));
 				const testData = bodyObj.filter(b => b.train === 0)
-					.map(obj => ({ phrase: obj.title, classification: obj.class }))
+					.map(obj => ({ phrase: obj.description, phrase2: obj.title, classification: obj.class }))
 				resolve({ trainData, testData });
 			}
 		});

@@ -11,6 +11,7 @@ module.exports.run = () => {
       const testData = response.testData;
       trainData.forEach(d => {
         classifier.addDocument(d.phrase, d.classification);
+        //classifier.addDocument(d.phrase2, d.classification);
       });
       classifier.train();
 
@@ -24,11 +25,21 @@ module.exports.run = () => {
         }
       });
 
+      const results2 = testData.map(d => {
+        const assigned = classifier.classify(d.phrase2);
+        return {
+          correct: assigned === d.classification,
+          assignedClass: assigned,
+          correctClass: d.classification,
+          phrase: d.phrase2,
+        }
+      });
+      
       const resultsObj = {
         name: 'natural/bayes/new/',
-        correct: results.filter(r => r.correct).length, 
-        incorrect: results.filter(r => !r.correct).length,
-        results,
+        correct: results.filter(r => r.correct).length, /*+ results2.filter(r2 => r2.correct).length,*/
+        incorrect: results.filter(r => !r.correct).length, /*+ results2.filter(r2 => !r2.correct).length,*/
+        results//: results.concat(results2),
       };
       u.logResults(trainData, resultsObj)
         .then(resolve);
